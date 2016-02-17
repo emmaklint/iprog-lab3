@@ -13,7 +13,7 @@ var DinnerModel = function() {
 	// Call the update method on all the observers in the array
 	this.notifyObserver = function(obj) {
 		for (var i in observers) {
-			this.observers[i].update(obj);
+			this.observers[i].update(this, obj);
 		}
 	}
 

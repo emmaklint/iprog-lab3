@@ -1,29 +1,19 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
  
-	//TODO Lab 2 implement the data structure that will hold number of guest
-	// and selected dinner options for dinner menu
 
-
-
-	this.makeObserver=function(){
-		
-		this.observers = [];
-	}
+	// this.makeObservers = function(){
+		this._observers = [];
+	// }
 
 	this.addObserver = function(observer) {
-		this.observers.push(observer);
+		this._observers.push(observer);
 	}
 
 	// Call the update method on all the observers in the array
-	this.notifyObserver = function(obj) {
-<<<<<<< HEAD
-		for (var i in observers) {
-			this.observers[i].update(this, obj);
-=======
-		for (var i in this.observers) {
-			this.observers[i].update(obj);
->>>>>>> 4781a0e81888f867f5dc8e42fb84dae6a154b1f4
+	this.notifyObserver = function(args) {
+		for (var i = 0; i < this._observers.length; i++) {
+			this._observers[i].update(this, args);
 		}
 	}
 
@@ -31,15 +21,15 @@ var DinnerModel = function() {
 		this.menu = [];
 	}
 
-	this.setNumberOfGuests = function(number) {
-		this.notifyObserver();
-		return number;
+	this.setNumberOfGuests = function(num) {
+		this.numberOfGuests = num;
+		this.notifyObserver(null);
 
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
-		return this.number;
+		return this.numberOfGuests;
 		}
 
 

@@ -8,12 +8,15 @@ var ExampleView = function (container,model) {
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
 	
-	model.makeObserver();
-	model.addObserver();
-	model.setNumberOfGuests(this.startGuest);
+	//model.makeObserver();
 
+	model.addObserver(this);
 	
-	this.numberOfGuests.html(model.getNumberOfGuests());
+	
+	this.update=function(){
+		this.numberOfGuests.html(model.getNumberOfGuests());
+	}
+
 
 	
 }

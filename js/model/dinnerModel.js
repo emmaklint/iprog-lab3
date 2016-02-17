@@ -5,20 +5,23 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 
 
+	this.number=2;
+	var observers=[];
 
-	this.makeObserver=function(){
+	//this.makeObserver=function(){
 		
-		this.observers = [];
-	}
+		//this.observers = [];
+	//}
 
 	this.addObserver = function(observer) {
-		this.observers.push(observer);
+		observers.push(observer);
 	}
 
 	// Call the update method on all the observers in the array
 	this.notifyObserver = function(obj) {
-		for (var i in this.observers) {
-			this.observers[i].update(obj);
+		for (var i=0; i<observers.length; i++) {
+			//console.log(observers);
+			observers[i].update(this,obj);
 		}
 	}
 
@@ -26,10 +29,13 @@ var DinnerModel = function() {
 		this.menu = [];
 	}
 
-	this.setNumberOfGuests = function(number) {
+	this.setNumberOfGuests = function(num) {
+		this.number = num;
+		if (this.number <= 0){
+			this.number=0;
+		}
 		this.notifyObserver();
-		return number;
-
+		return this.number;
 	}
 
 	// should return 

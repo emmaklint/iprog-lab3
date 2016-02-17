@@ -8,11 +8,16 @@ var ExampleView = function (container,model) {
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
 	
+
 	// model.makeObservers();
 	model.addObserver(this);
 	model.setNumberOfGuests(startGuest);
+	//model.makeObserver();
 	
-	this.numberOfGuests.html(model.getNumberOfGuests());
+	this.update=function(){
+		this.numberOfGuests.html(model.getNumberOfGuests());
+	}
+
 
 	
 }

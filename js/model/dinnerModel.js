@@ -1,19 +1,24 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
- 
 
-	// this.makeObservers = function(){
-		this._observers = [];
-	// }
+	this.number=2;
+	var observers=[];
+	var pending=[];
+
+	//this.makeObserver=function(){
+		
+		//this.observers = [];
+	//}
 
 	this.addObserver = function(observer) {
-		this._observers.push(observer);
+		observers.push(observer);
 	}
 
 	// Call the update method on all the observers in the array
-	this.notifyObserver = function(args) {
-		for (var i = 0; i < this._observers.length; i++) {
-			this._observers[i].update(this, args);
+	this.notifyObserver = function(obj) {
+		for (var i=0; i<observers.length; i++) {
+			//console.log(observers);
+			observers[i].update(this,obj);
 		}
 	}
 
@@ -22,9 +27,12 @@ var DinnerModel = function() {
 	}
 
 	this.setNumberOfGuests = function(num) {
-		this.numberOfGuests = num;
-		this.notifyObserver(null);
-
+		this.number = num;
+		if (this.number <= 0){
+			this.number=0;
+		}
+		this.notifyObserver();
+		return this.number;
 	}
 
 	// should return 
@@ -32,6 +40,40 @@ var DinnerModel = function() {
 		return this.numberOfGuests;
 		}
 
+	//Tanken är att om vi klickar på en dish, läggs den i pending tills vi klickas confirm dish (skickas då vidare till den sidan vid onklick) 
+	this.addToPending=function(id){
+		for(i in dishes){
+			if (dishes[i].id==id){
+				pending.push(dishes[i]);
+				this.notifyObserver();
+				return pending;
+			}
+		}		
+	}	
+
+	this.removeFromPending = function(){
+		while(pending.length > 0) {
+    		pending.pop(); //Removes the last element of an array, and returns that element
+    		this.notifyObservers();
+			}
+		}
+
+
+	this.pendingDish = function(){
+		return pending;
+	}
+
+	// this.getPendingPrice = function(){
+	// 	var pendPrice=0;,
+	// 	if(pending.length!==0){
+	// 		//nån for-loop som lägger ihop alla priser för alla indgridienser
+	// 		//return pendPrice;
+	// 	}
+
+	// 	else{
+	// 		return 0;
+	// 	}
+	// }
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
@@ -56,6 +98,18 @@ var DinnerModel = function() {
 		}
 
 		return listOfIngredients;
+	}
+
+		this.getPendingPrice = function(){	
+		var pendingPrice = 0;
+		if (pending.length !== 0){
+		for(x in pending[0].ingredients){
+			pendingPrice = pendingPrice + pending[0].ingredients[x].price;
+		};
+		pendingPrice = pendingPrice*this.getNumberOfGuests();
+		return pendingPrice;
+	}
+	else{return 0}
 	}
 
 	this.getDishPrice = function(id) {

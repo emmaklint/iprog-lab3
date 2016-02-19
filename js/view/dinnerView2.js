@@ -8,7 +8,7 @@ var DinnerView2 = function (container,model) {
 	this.menuPrice=container.find("#dish-cost");
 	this.price = container.find("#dinnerCost");
 
-	var pending=model.pendingDish();
+	this.pending=model.pendingDish();
 
 
 	var guests=model.getNumberOfGuests();
@@ -21,8 +21,8 @@ var DinnerView2 = function (container,model) {
 
 		this.menuDish.empty();
 		this.menuPrice.empty();
-		if(pending.length !== 0){
-			//for loop 
+		if(this.pending.length !== 0){
+			
 		}
 
 		else{

@@ -1,24 +1,71 @@
 var DinnerView3 = function (container,model) {
 
-	// Hämta antal gäster
-	num = model.getNumberOfGuests();
+	this.container = container;
+	this.starter = (model.getAllDishes('starter'));
+	this.main = (model.getAllDishes('main dish'));
+	this.dessert = (model.getAllDishes('dessert'));
 
-	// Skicka in måltiden i dishInfo
-	var dish = model.getDish(100);
-	dishInfo(dish, model);
+
+	this.allTheDish=container.find("#allDishes");
+
+	
+		for (var i = 0; i < this.starter.length; i++){
+			this.allTheDish.append(
+			"<div class="+'"'+"col-md-3 dishtype starter"+'"'+"id="+'"'+this.starter[i].name+'"'+"style="+'"'+"display:block"+'"'+">"
+			+"<img src="+'"'+"images/"+this.starter[i].image+'"'+"id="+'"'+"image"+'"'+">"
+			+"<h4 id="+'"'+"title"+'"'+">"+this.starter[i].name+"</h4>"
+			+"<div id="+'"'+"description"+'"'+">"+"<p>"+this.starter[i].description.slice(0,80)+"..."+"</p>"+"</div>"
+			+"</div>");
+				
+};
+
+		for (var i = 0; i < this.main.length; i++){
+			this.allTheDish.append(
+			"<div class="+'"'+"col-md-3 dishtype main"+'"'+"id="+'"'+this.main[i].name+'"'+"style="+'"'+"display:block"+'"'+">"
+			+"<img src="+'"'+"images/"+this.main[i].image+'"'+"id="+'"'+"image"+'"'+">"
+			+"<h4 id="+'"'+"title"+'"'+">"+this.main[i].name+"</h4>"
+			+"<div id="+'"'+"description"+'"'+">"+"<p>"+this.main[i].description.slice(0,80)+"..."+"</p>"+"</div>"
+			+"</div>");
+				
+};
+
+		for (var i = 0; i < this.dessert.length; i++){
+			this.allTheDish.append(
+			"<div class="+'"'+"col-md-3 dishtype dessert"+'"'+"id="+'"'+this.dessert[i].name+'"'+"style="+'"'+"display:block"+'"'+">"
+			+"<img src="+'"'+"images/"+this.dessert[i].image+'"'+"id="+'"'+"image"+'"'+">"
+			+"<h4 id="+'"'+"title"+'"'+">"+this.dessert[i].name+"</h4>"
+			+"<div id="+'"'+"description"+'"'+">"+"<p>"+this.dessert[i].description.slice(0,80)+"..."+"</p>"+"</div>"
+			+"</div>");
+				
+};
+
+	this.whatDishToDisplay=function(someDishType){
+		if(someDishType){
+			for (var x = 0; x < document.getElementsByClassName("dishtype").length; x++) {
+				document.getElementsByClassName("dishtype")[x].style.display = 'none';}	
+
+			for(var x = 0; x < document.getElementsByClassName(someDishType).length; x++){
+			document.getElementsByClassName(someDishType)[i].style.display = 'block';}
+		}
+
+		else{
+			for(var x = 0; x < document.getElementsByClassName("dishtype").length; x++){
+			document.getElementsByClassName("dishtype")[i].style.display = 'block';}
+		}
+	};
+
+	
 }
 
-var dishInfo = function(dish, model) {
-	// Skapa en div för hela rätten, lägg till titel, bild och beskrivning.
-	// Hämta ut alla ingredienser med kostnad och lägg i separat div.
-	// Hämta total kostnad
 
 
 
-//NOTE TO SELF: GÖR SÅ ATT ALLA HÄMTAS UT!
-	var dishContainer = $(".right-content").append('<div class="dishes"></div>');
-	dishContainer.append('<img src="images/' + (dish.image) + '"/>');
-	dishContainer.append('<h4>' + dish.name + '</h4>');
-	dishContainer.append("<p>" + dish.description.slice(0,85) + "..."+"</p>");
 
-}
+
+
+
+
+
+
+
+

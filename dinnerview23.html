@@ -95,11 +95,28 @@
       margin-left: 33%;
     }
 
-    .dishes{
-      margin-top: 20px;
-      max-width:10px;
-      word-wrap:break-word;
+    #right-content{
+      height:80%;
+      margin-top: 30px;
+
     }
+
+    .dish{
+      height: 300px;
+      width: 170px;
+      border: solid white;
+      padding:0px;
+      text-align: center;
+    }
+
+    #image{
+      width: 160px;
+      height: 150px;
+      border-radius: 10px;
+      object-fit:cover;
+    }
+
+
 
     </style>
   </head>
@@ -164,14 +181,15 @@
       <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select Dish Type
       <span class="caret"></span></button>
       <ul class="dropdown-menu">
+        <li><a id="all">Show All Dishes</a></li>
         <li><a id="starter">Starter</a></li>
         <li><a id="main">Main</a></li>
         <li><a id="dessert">Dessert</a></li>
       </ul>
     </div>
 
-    <div class="right-content col-md-10">
-    
+    <div id="right-content" class="col-md-12">
+      <div id="allDishes"></div>
     </div>
   
 
@@ -186,5 +204,6 @@
   <script src="js/view/dinnerView2.js"></script>
   <script src="js/view/dinnerView3.js"></script>
   <script src="js/view/dinnerView2Controller.js"></script>
+   <script src="js/view/dinnerView3Controller.js"></script>
   </body>
 </html>

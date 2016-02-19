@@ -37,7 +37,7 @@ var DinnerModel = function() {
 
 	// should return 
 	this.getNumberOfGuests = function() {
-		return this.numberOfGuests;
+		return this.number;
 		}
 
 	//Tanken är att om vi klickar på en dish, läggs den i pending tills vi klickas confirm dish (skickas då vidare till den sidan vid onklick) 

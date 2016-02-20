@@ -1,6 +1,6 @@
 var DinnerView3 = function (container,model) {
 
-	this.container = container;
+	this.container=container;
 	this.starter = (model.getAllDishes('starter'));
 	this.main = (model.getAllDishes('main dish'));
 	this.dessert = (model.getAllDishes('dessert'));
@@ -38,24 +38,26 @@ var DinnerView3 = function (container,model) {
 			+"</div>");
 				
 };
-
-	this.whatDishToDisplay=function(someDishType){
+	
+	this.whatDishToDisplay= function(someDishType){
 		if(someDishType){
-			for (var x = 0; x < document.getElementsByClassName("dishtype").length; x++) {
-				document.getElementsByClassName("dishtype")[x].style.display = 'none';}	
+			for (var i = 0; i < document.getElementsByClassName("dishtype").length; i++) {
+				document.getElementsByClassName("dishtype")[i].style.display = 'none';}	
 
-			for(var x = 0; x < document.getElementsByClassName(someDishType).length; x++){
+			for(var i = 0; i < document.getElementsByClassName(someDishType).length; i++){
 			document.getElementsByClassName(someDishType)[i].style.display = 'block';}
 		}
 
 		else{
-			for(var x = 0; x < document.getElementsByClassName("dishtype").length; x++){
+		for(var i = 0; i< document.getElementsByClassName("dishtype").length; i++){
 			document.getElementsByClassName("dishtype")[i].style.display = 'block';}
 		}
 	};
 
 	
-}
+
+	
+};
 
 
 

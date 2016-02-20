@@ -148,6 +148,7 @@
             <tr>
               <th>Dish Name</th>
                 <th>Cost</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -163,7 +164,7 @@
             </tbody>
         </table>
 
-      <button type="button" class="btn btn-default" style="display: block; margin: 0 auto;">Confirm Dinner</button>
+      <button type="button" id="confirm" class="btn btn-default" style="display: block; margin: 0 auto;">Confirm Dinner</button>
       </div> 
 
     <div id="right-column" class="col-md-2"> 
@@ -173,7 +174,7 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search for dish">
           <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Search</button></span>
+          <button class="btn btn-default" id="search" type="button">Search</button></span>
         </div> 
       </div> 
 
@@ -191,6 +192,7 @@
     <div id="right-content" class="col-md-12">
       <div id="allDishes"></div>
     </div>
+
   
 
     <!-- jQuery -->
@@ -204,6 +206,6 @@
   <script src="js/view/dinnerView2.js"></script>
   <script src="js/view/dinnerView3.js"></script>
   <script src="js/view/dinnerView2Controller.js"></script>
-   <script src="js/view/dinnerView3Controller.js"></script>
+  <script src="js/view/dinnerView3Controller.js"></script>
   </body>
 </html>

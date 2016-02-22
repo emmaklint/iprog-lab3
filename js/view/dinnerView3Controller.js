@@ -19,4 +19,16 @@ var DinnerView3Controller = function(view, model ) {
 
 
 
+	view.container.find("#search").click( function(){
+		searchInput = $('input:text').val();
+		view.searchDishes(searchInput);
+	})
+
+	view.container.find(".dish").click( function(){
+    	var status = $(this).attr('id');
+    	console.log(status);
+	    	model.addToPending(status);
+    	view.display("");
+	})
+
 };

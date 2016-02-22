@@ -4,11 +4,11 @@ var DinnerView2 = function (container,model) {
 	this.numberOfGuests = container.find("#numberOfGuests");
 	this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
-	this.menuDish = container.find("#dish-name");
-	this.menuPrice=container.find("#dish-cost");
-	this.price = container.find("#dinnerCost");
-
+	
+	model.addToPending(1);
 	this.pending=model.pendingDish();
+	
+	
 
 
 	var guests=model.getNumberOfGuests();
@@ -18,19 +18,30 @@ var DinnerView2 = function (container,model) {
 
 
 		this.numberOfGuests.html(model.getNumberOfGuests());
-
-		this.menuDish.empty();
-		this.menuPrice.empty();
 		if(this.pending.length !== 0){
+
+			this.pendingName.html(this.pending[0].name);
+			this.pendingPrice.html(model.getPendingPrice()+" SEK"); //MÅSTE FIXAS -  hamna rätt i tabellen.
 			
 		}
 
 		else{
-			this.menuDish.append("<div>"+"Pending" + "</div>");
-			this.menuPrice.append("<div>"+"0.00" + "</div>");
-		}
+			this.pendingName.html("Pending");
+			this.pendingPrice.html("0.00");
+		};
+
+		this.pendingPrice.html((model.getPendingPrice())+" SEK"); 
+		this.totalCost.html((model.getTotalMenuPrice()+model.getPendingPrice())+" SEK");
 };
 	
+
+	this.pendingName = container.find("#dish-name");
+	this.pendingPrice = container.find("#dish-cost");
+	this.totalCost = container.find("#dinnerCost");
+	//this.totalCost.append("<tr><td>Total cost:</td><td id="+'"'+"pendingPrice"+'"'+"></td></tr><td></td>");
+
+
+
 
 	model.addObserver(this);
 	this.update();
@@ -39,4 +50,4 @@ var DinnerView2 = function (container,model) {
 	//this.price.append("Total cost"+ model.getTotalMenuPrice());
 
 
-}
+};

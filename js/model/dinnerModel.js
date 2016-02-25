@@ -4,7 +4,6 @@ var DinnerModel = function() {
 	this.number=2;
 	var observers=[];
 	var pending=[];
-	this.menu=[];
 
 	this.addObserver = function(observer) {
 		observers.push(observer);
@@ -57,20 +56,6 @@ var DinnerModel = function() {
 		return pending;
 	}
 
-<<<<<<< HEAD
-=======
-	this.getPendingPrice = function(){	
-		var pendingPrice = 0;
-		if (pending.length !== 0){
-		for(x in pending[0].ingredients){
-			pendingPrice = pendingPrice + pending[0].ingredients[x].price;
-		};
-		pendingPrice = pendingPrice*this.getNumberOfGuests();
-		return pendingPrice;
-	}
-	else{return 0}
-	}
->>>>>>> 33fae255bea8854cb570b58635beb669edbe59de
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
@@ -80,7 +65,6 @@ var DinnerModel = function() {
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		return this.menu;
-		notifyObservers();
 	}
 
 	//Returns all ingredients for all the dishes on the menu.

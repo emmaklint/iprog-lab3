@@ -1,8 +1,6 @@
 var DinnerView1 = function (container,model) {
 
 
-	this.createDinnerBtn = container.find("#CreateButton");
-
-	//this.createDinnerBtn.html=(model.)
+	$("#createNewDinnerButton").append('<button class="createNewDinnerButton" class="btn">Create Dinner</button>')
 
 }

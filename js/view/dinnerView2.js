@@ -1,42 +1,29 @@
 var DinnerView2 = function (container,model) {
 
-	
-	this.numberOfGuests = container.find("#numberOfGuests");
-	this.plusButton = container.find("#plusGuest");
-	this.minusButton = container.find("#minusGuest");
-	this.menuDish = container.find("#dish-name");
-	this.menuPrice=container.find("#dish-cost");
-	this.price = container.find("#dinnerCost");
+	var costInfo = function(dish, model) {
+		var cost = model.getDishPrice(dish.id);
 
-	this.pending=model.pendingDish();
+		var dishName = ('<td width="30%">' + dish.name + '</td>')
+		var dishCost = ('<td width="30%">' + cost + ' kr' + '</td>')
 
+		$("#table").append('<tr>' + dishName + dishCost + '</tr>')
+	}
 
-	var guests=model.getNumberOfGuests();
+	this.update = function(obj) {
+		this.guestInput = container.find("#number");
 
-	
-	this.update=function(){
+		this.guestInput.val(model.getNumberOfGuests());
 
+		$("#table").html('<tr><th>Dishname</th><th>Cost</th></tr>');
+		$("#totalPrice").html('<p>Total: ' + model.getTotalMenuPrice() + ' kr</p>');
 
-		this.numberOfGuests.html(model.getNumberOfGuests());
+		var menu = model.getFullMenu();
 
-		this.menuDish.empty();
-		this.menuPrice.empty();
-		if(this.pending.length !== 0){
-			
+		for (var i = 0; i < menu.length; i++) {
+			costInfo(menu[i],model);
 		}
+	} 
 
-		else{
-			this.menuDish.append("<div>"+"Pending" + "</div>");
-			this.menuPrice.append("<div>"+"0.00" + "</div>");
-		}
-};
-	
-
-	model.addObserver(this);
 	this.update();
-	
-
-	//this.price.append("Total cost"+ model.getTotalMenuPrice());
-
-
+	model.addObserver(this);
 }

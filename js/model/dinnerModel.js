@@ -5,11 +5,6 @@ var DinnerModel = function() {
 	var observers=[];
 	var pending=[];
 
-	//this.makeObserver=function(){
-		
-		//this.observers = [];
-	//}
-
 	this.addObserver = function(observer) {
 		observers.push(observer);
 	}
@@ -17,8 +12,7 @@ var DinnerModel = function() {
 	// Call the update method on all the observers in the array
 	this.notifyObserver = function(obj) {
 		for (var i=0; i<observers.length; i++) {
-			//console.log(observers);
-			observers[i].update(this,obj);
+			observers[i].update();
 		}
 	}
 
@@ -32,7 +26,6 @@ var DinnerModel = function() {
 			this.number=0;
 		}
 		this.notifyObserver();
-		return this.number;
 	}
 
 	// should return 
@@ -63,17 +56,6 @@ var DinnerModel = function() {
 		return pending;
 	}
 
-	// this.getPendingPrice = function(){
-	// 	var pendPrice=0;,
-	// 	if(pending.length!==0){
-	// 		//nån for-loop som lägger ihop alla priser för alla indgridienser
-	// 		//return pendPrice;
-	// 	}
-
-	// 	else{
-	// 		return 0;
-	// 	}
-	// }
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
@@ -103,13 +85,15 @@ var DinnerModel = function() {
 		this.getPendingPrice = function(){	
 		var pendingPrice = 0;
 		if (pending.length !== 0){
-		for(x in pending[0].ingredients){
-			pendingPrice = pendingPrice + pending[0].ingredients[x].price;
-		};
-		pendingPrice = pendingPrice*this.getNumberOfGuests();
-		return pendingPrice;
-	}
-	else{return 0}
+			for(x in pending[0].ingredients){
+				pendingPrice = pendingPrice + pending[0].ingredients[x].price;
+			};
+			pendingPrice = pendingPrice*this.getNumberOfGuests();
+			return pendingPrice;
+		}
+		else {
+			return 0
+		}
 	}
 
 	this.getDishPrice = function(id) {

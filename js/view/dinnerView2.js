@@ -2,15 +2,14 @@ var DinnerView2 = function (container,model) {
 
 	var costInfo = function(dish, model) {
 		var cost = model.getDishPrice(dish.id);
-
 		var dishName = ('<td width="30%">' + dish.name + '</td>')
 		var dishCost = ('<td width="30%">' + cost + ' kr</td>')
 
-		$("#table").append('<tr id="dish-nr-' + dish.id + '">' + dishName + dishCost + '</tr>')
+		$("#dishTable").append('<tr id="dish-nr-' + dish.id + '">' + dishName + dishCost + '</tr>')
 	}
 
 	this.update = function(obj) {
-		this.guestInput = $("#number");
+		this.guestInput = $("#numberOfGuestsInput");
 		this.guestInput.val(model.getNumberOfGuests());
 
 		this.pending = model.pendingDish();
@@ -18,7 +17,7 @@ var DinnerView2 = function (container,model) {
 		pendingPrice = 0;
 		minusPrice = 0;
 
-		$("#table").html('<tr><th>Dishname</th><th>Cost</th></tr>');
+		$("#dishTable").html('<tr><th>Dishname</th><th>Cost</th></tr>');
 		
 		var menu = model.getFullMenu();
 
@@ -37,7 +36,7 @@ var DinnerView2 = function (container,model) {
 
 			pendingPrice = model.getDishPrice(this.pending[0].id);
 			pendingString += '<tr><td width="30%">Pending</td><td width="30%">' + pendingPrice + ' kr</td>'
-			$("#table").append(pendingString);
+			$("#dishTable").append(pendingString);
 		}
 		
 		totMenuPrice = model.getTotalMenuPrice();

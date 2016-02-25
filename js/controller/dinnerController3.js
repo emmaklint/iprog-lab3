@@ -16,8 +16,7 @@ var DinnerController3 = function(view, model) {
 		
 		$(".clickDish").click(function(){
 		var id = $(this).attr('id');
-		console.log(id + 'woooooo');
-		// model.addToPending(status);
+		model.addToPending(id);
 		$("#dinnerView3").hide();
 		$("#dinnerView4").show()
 		DinnerView4($("#dinnerView4"), model, id);

@@ -34,20 +34,15 @@ var DinnerModel = function() {
 		}
 
 	//Tanken är att om vi klickar på en dish, läggs den i pending tills vi klickas confirm dish (skickas då vidare till den sidan vid onklick) 
-	this.addToPending=function(id){
-		for(i in dishes){
-			if (dishes[i].id==id){
-				pending.push(dishes[i]);
-				this.notifyObserver();
-				return pending;
-			}
-		}		
+	this.addToPending = function(id) {
+		pending.push(this.getDish(id))
+		this.notifyObserver();
 	}	
 
 	this.removeFromPending = function(){
 		while(pending.length > 0) {
     		pending.pop(); //Removes the last element of an array, and returns that element
-    		this.notifyObservers();
+    		this.notifyObserver();
 			}
 		}
 
@@ -80,20 +75,6 @@ var DinnerModel = function() {
 		}
 
 		return listOfIngredients;
-	}
-
-		this.getPendingPrice = function(){	
-		var pendingPrice = 0;
-		if (pending.length !== 0){
-			for(x in pending[0].ingredients){
-				pendingPrice = pendingPrice + pending[0].ingredients[x].price;
-			};
-			pendingPrice = pendingPrice*this.getNumberOfGuests();
-			return pendingPrice;
-		}
-		else {
-			return 0
-		}
 	}
 
 	this.getDishPrice = function(id) {

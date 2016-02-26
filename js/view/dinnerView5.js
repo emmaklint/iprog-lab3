@@ -23,7 +23,6 @@ var DinnerView5 = function (container, model) {
 		$("#numberOfGuests-5").html('My dinner: ' + num + ' people');
 		$("#backButtonDiv-5").html('<button id="backButton-5" type="button" class="backButton">Go back and edit dinner</button>')
 		
-		
 
 		// Send every dinner-object into dinnerCost-method 
 		// which gets all the relevant info about the objects.
@@ -42,4 +41,3 @@ var DinnerView5 = function (container, model) {
 	model.addObserver(this);
 
 }
- 

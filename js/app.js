@@ -26,7 +26,6 @@ $(function() {
 });
 
 var masterController = function(model) {
-	console.log("go")
 	$("#welcomeScreen").show()
 	$("#left-column").hide()
 	$("#dinnerView3").hide()

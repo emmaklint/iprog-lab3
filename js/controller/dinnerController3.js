@@ -2,7 +2,7 @@ var DinnerController3 = function(view, model) {
 
 	$("#searchButton").click(function() {
 		if ($("#typeSelect").val() === 'all dishes') {
-			view.updateSearch(void 0, $("#searchInput").val());
+			view.updateSearch(undefined, $("#searchInput").val());
 			console.log('first')
 		} else {
 			view.updateSearch($("#typeSelect").val(), $("#searchInput").val());
@@ -17,12 +17,10 @@ var DinnerController3 = function(view, model) {
 	$("#typeSelect").change(function() {
 		
 		if ($(this).val() === 'all dishes') {
-			view.updateSearch(void 0, $("#searchInput").val());
+			view.updateSearch(undefined, $("#searchInput").val());
 		} else {
 			view.updateSearch($(this).val(), $("#searchInput").val());
 		}
-
-
 		makeDishClickable();
 	})
 
